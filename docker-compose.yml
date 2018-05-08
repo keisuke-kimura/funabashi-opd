@@ -1,0 +1,15 @@
+version: '3'
+services:
+  funabashi_opd_db:
+    image: mysql:5.7
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    volumes:
+      - store:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: 'opd'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - 13306:3306
+volumes:
+  store:
+    driver: local
